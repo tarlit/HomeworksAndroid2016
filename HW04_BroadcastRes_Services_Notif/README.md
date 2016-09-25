@@ -5,7 +5,7 @@ Extend the service example we made in class to play mp3 files defined by
 you(use objects not pass array or other data type).     
 Add functionality for pause/play/fast forward/reverse.      
 Do that with Service.     
-Note:You already have spotify design use it for this task.    
+**Note**:You already have spotify design use it for this task.    
 
 ###Task2 :
 Use broadcast receiver with status ONBATTERYCHANGED.    
