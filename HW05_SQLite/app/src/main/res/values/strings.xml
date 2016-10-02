@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LectSQLite</string>
+    <string name="showAllItems">Show All Contacts</string>
+    <string name="addItems">Add New 60 Contacts</string>
+</resources>
