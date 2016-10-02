@@ -15,7 +15,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private int position;
+        int position;
         TextView idText;
         TextView nameText;
         TextView emailText;

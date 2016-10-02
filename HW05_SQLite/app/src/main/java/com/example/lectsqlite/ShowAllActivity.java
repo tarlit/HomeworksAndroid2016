@@ -20,9 +20,9 @@ public class ShowAllActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_contacts_layout);
 
+        dbManager = new DBManager(ctx);
         allContactsView = (RecyclerView) findViewById(R.id.allContacts);
 
-        dbManager = new DBManager(ctx);
         adapter = new Adapter(dbManager.getAllContacts());
         layoutManager = new LinearLayoutManager(ctx);
 

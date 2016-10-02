@@ -6,11 +6,11 @@ public class Contacts {
     private String _name;
     private String _email;
 
-    public Contacts() {
-        this._id = 0;
-        this._name = "Gosho";
-        this._email = "gosho@abv.bg";
-    }
+//    public Contacts() {
+//        this._id = 0;
+//        this._name = "Gosho";
+//        this._email = "gosho@abv.bg";
+//    }
 
     public Contacts(int id, String name, String email) {
         this._id = id;
