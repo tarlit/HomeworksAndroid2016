@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="ParentMaterialTheme">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ParentMaterialTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:textColorPrimaryInverse">@color/textColor</item>
+        <item name="android:textColorSecondaryInverse">@color/colorPrimaryDark</item>
+
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorControlHighlight</item>
+
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+
+    </style>
+
+</resources>
