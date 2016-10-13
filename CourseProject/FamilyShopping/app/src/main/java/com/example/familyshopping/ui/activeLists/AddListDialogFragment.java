@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.familyshopping.R;
+import com.example.familyshopping.utils.Constants;
+import com.firebase.client.Firebase;
 
 /**
  * Adds a new shopping list
@@ -90,7 +92,10 @@ public class AddListDialogFragment extends DialogFragment {
      */
     public void addShoppingList() {
 
-        //Firebase ref = new Firebase(Constants.FIREBASE_URL);
+        Firebase ref = new Firebase(Constants.FIREBASE_URL);
+
+        String userEnteredName = mEditTextListName.getText().toString();
+        ref.child("listName").setValue(userEnteredName);
     }
 
 }
