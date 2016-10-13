@@ -5,12 +5,12 @@
     <color name="colorAccent">#8bc34a</color>
     <color name="backgroundColor">#f6fbef</color>
 
-    <color name="textColor">#212121</color>
     <color name="textColorPrimary">#ffffff</color>
     <color name="textColorSecondary">#b3e5fc</color>
-    <color name="colorControlHighlight">#C5E1A5</color>
+    <color name="colorControlHighlight">#c5e1a5</color>
 
-    <color name="colorDivider">#bdbdbd</color>
-    <color name="colorGray">#757575</color>
+    <color name="colorDarkGray">#bdbdbd</color>
     <color name="colorOrange">#ffc107</color>
+    <color name="colorBlack">#212121</color>
+    <color name="colorLightBlack">#747474</color>
 </resources>
