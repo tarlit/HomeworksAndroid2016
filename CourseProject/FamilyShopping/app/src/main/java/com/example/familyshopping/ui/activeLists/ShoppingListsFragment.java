@@ -7,8 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.familyshopping.R;
+import com.example.familyshopping.model.ShoppingList;
+import com.example.familyshopping.utils.Constants;
+import com.example.familyshopping.utils.Utils;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass that shows a list of all shopping lists a user can see.
@@ -19,6 +29,9 @@ import com.example.familyshopping.R;
 public class ShoppingListsFragment extends Fragment {
 
     private ListView mListView;
+    private TextView mTextViewListName;
+    private TextView mTextViewListOwner;
+    private TextView mTextViewEditTime;
 
     public ShoppingListsFragment() {
         /* Required empty public constructor */
@@ -61,6 +74,44 @@ public class ShoppingListsFragment extends Fragment {
         initializeScreen(rootView);
 
         /**
+         * Create Firebase references
+         */
+        Firebase refListName = new Firebase(Constants.FIREBASE_URL).child("activeList");
+        /**
+         * Add ValueEventListeners to Firebase references
+         * to control get data and control behavior and visibility of elements
+         */
+        refListName.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // You can use getValue to deserialize the data at dataSnapshot
+                // into a ShoppingList.
+                ShoppingList shoppingList = dataSnapshot.getValue(ShoppingList.class);
+
+                // If there was no data at the location we added the listener, then
+                // shoppingList will be null.
+                if (shoppingList != null) {
+                    // If there was data, take the TextViews and set the appropriate values.
+                    mTextViewListName.setText(shoppingList.getListName());
+                    mTextViewListOwner.setText(shoppingList.getOwner());
+                    if (shoppingList.getTimestampLastChanged() != null) {
+                        mTextViewEditTime.setText(
+                                Utils.SIMPLE_DATE_FORMAT.format(
+                                        new Date(shoppingList.getTimestampLastChangedLong())));
+                    } else {
+                        mTextViewEditTime.setText("");
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        /**
          * Set interactive bits, such as click events and adapters
          */
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,6 +120,9 @@ public class ShoppingListsFragment extends Fragment {
 
             }
         });
+
+        // TODO Add an OnClick listener here so that when the user clicks on the
+        // mTextViewListName it opens up an instance of ActiveListDetailsActivity
 
         return rootView;
     }
@@ -84,5 +138,9 @@ public class ShoppingListsFragment extends Fragment {
      */
     private void initializeScreen(View rootView) {
         mListView = (ListView) rootView.findViewById(R.id.list_view_active_lists);
+        // Get the TextViews in the single_active_list layout for list name, edit time and owner
+        mTextViewListName = (TextView) rootView.findViewById(R.id.text_view_list_name);
+        mTextViewListOwner = (TextView) rootView.findViewById(R.id.text_view_created_by_user);
+        mTextViewEditTime = (TextView) rootView.findViewById(R.id.text_view_edit_time);
     }
 }

@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.familyshopping.R;
+import com.example.familyshopping.model.ShoppingList;
 import com.example.familyshopping.utils.Constants;
 import com.firebase.client.Firebase;
 
@@ -91,12 +92,19 @@ public class AddListDialogFragment extends DialogFragment {
      * Add new active list
      */
     public void addShoppingList() {
-
+        // Get the reference to the root node in Farebase
         Firebase ref = new Firebase(Constants.FIREBASE_URL);
 
+        // Get the string that the user entered into the EditText and make an object with it
+        // We'll use "Anonymous Owner" for the owner because we don't have user accounts yet
         String userEnteredName = mEditTextListName.getText().toString();
-        ref.child("listName").setValue(userEnteredName);
-    }
+        String owner = "Anonymous Owner";
+        ShoppingList currentList = new ShoppingList(userEnteredName, owner);
 
+        // Go to the "activeList" child node of the root node.
+        // This will create the node for you if it doesn't already exist.
+        // Then using the setValue menu it will serialize the ShoppingList POJO
+        ref.child("activeList").setValue(currentList);
+    }
 }
 
