@@ -18,7 +18,7 @@
         <ListView
             android:id="@+id/list_view_active_lists"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/list_view_height"
+            android:layout_height="@dimen/no_height"
             android:layout_weight="1"
             android:scrollbars="none" />
 
